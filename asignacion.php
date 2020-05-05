@@ -51,4 +51,27 @@ class Asignacion
         }
         return $return;
      }
+
+     public static function MostrarMateriasAsignadas()
+     {
+         $return = false;
+         $materias = Datos::TraerJson("materias-profesores.json");
+         $profesores = Datos::TraerJson("profesores.json");
+         if ($materias==true && $profesores==true)
+         {
+            foreach ($materias as $materia)
+            {
+                foreach ($profesores as $profe)
+                {
+                    if ($profe->legajo == $materia->legajo)
+                    {
+                        echo "Profesor: {$profe->nombre} dicta la materia con id: {$materia->id}.";
+                        $return=true;
+                    }
+                }
+            }
+         }
+         return $return;
+     }
+     
 }

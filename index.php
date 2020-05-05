@@ -51,7 +51,8 @@ switch($requestMethod)
                 $token = $header['token'];
                 if (User::isAdmin($token))
                 {
-                    $respuesta->data= Datos::TraerJson('materias-profesores.json');
+                    $respuesta->data= Asignacion::MostrarMateriasAsignadas();
+                    //$respuesta->data= Datos::TraerJson('materias-profesores.json');
                 }
                 else
                 {
