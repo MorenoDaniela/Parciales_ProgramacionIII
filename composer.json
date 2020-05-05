@@ -1,0 +1,12 @@
+{
+    "name": "dell/parciales_programacion3",
+    "authors": [
+        {
+            "name": "Daniela Moreno",
+            "email": "denu.moreno.1990@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    }
+}
