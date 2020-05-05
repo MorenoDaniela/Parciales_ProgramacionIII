@@ -21,7 +21,9 @@ class Asignacion
         $return=false;
         $asig = new Asignacion($legajo, $id, $turno);
         $lista = Datos::TraerJson("materias-profesores.json");
-        if (Asignacion::AsignacionAlreadyExists($asig))
+        $unlegajo = Profesor::Verificar($legajo);
+        $idMateria = Materia::Verificar($id);
+        if (Asignacion::AsignacionAlreadyExists($asig) && $unlegajo!=false && $idMateria!=false)
         {
             $return = "No se puede asignar el mismo legajo en el mismo turno y materia.";
         }else
@@ -65,8 +67,8 @@ class Asignacion
                 {
                     if ($profe->legajo == $materia->legajo)
                     {
-                        echo "Profesor: {$profe->nombre} dicta la materia con id: {$materia->id}.";
-                        $return=true;
+                        $return= "Profesor: {$profe->nombre} dicta la materia con id: {$materia->id}." . $return;
+                        //$return=true;
                     }
                 }
             }

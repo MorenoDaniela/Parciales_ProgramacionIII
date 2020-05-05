@@ -24,4 +24,40 @@ class Materia
         }
         return $return;
      }
+
+     public static function MateriaAlreadyExists($materia)
+     {
+        $return = false;
+        $lista = Datos::TraerJson("materias.json");
+
+        if ($lista==true)
+        {
+            foreach ($lista as $unamateria)
+            {
+                if ($unamateria->id == $materia->id)
+                {
+                    $return = true;
+                }
+            }
+        }
+        return $return;
+     }
+
+     public static function Verificar($id)
+     {
+        $return = false;
+        $lista = Datos::TraerJson("materias.json");
+
+        if ($lista==true)
+        {
+            foreach ($lista as $materia)
+            {
+                if ($materia->id == $id)
+                {
+                    $return = true;
+                }
+            }
+        }
+        return $return;
+     }
 }

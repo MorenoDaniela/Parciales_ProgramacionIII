@@ -48,4 +48,23 @@ class Profesor
         }
         return $return;
      }
+
+     public static function Verificar($legajo)
+     {
+        $return = false;
+        $lista = Datos::TraerJson("profesores.json");
+
+        if ($lista==true)
+        {
+            foreach ($lista as $unprofe)
+            {
+                if ($unprofe->legajo == $legajo)
+                {
+                    $return = true;
+                }
+            }
+        }
+        return $return;
+     }
 }
+
